@@ -13,27 +13,51 @@
 </head>
 
 <body>
-    <div class="questionContainer">
-        <div class="question-section bordered">
-            <h2 id="question"></h2>
+    <div class="container">
+        <div class="question-container">
+            <div class="question-section bordered">
+                <h2 id="question"></h2>
+            </div>
+            <div class="answer-section">
+                <div class="answer bordered">
+                    <h5>A: <span class="ans"></span></h5>
+                </div>
+                <div class="answer bordered">
+                    <h5>B: <span class="ans"></span></h5>
+                </div>
+                <div class="answer bordered">
+                    <h5>C: <span class="ans"></span></h5>
+                </div>
+                <div class="answer bordered">
+                    <h5>D: <span class="ans"></span></h5>
+                </div>
+            </div>
+            <p>Time remaining: <span id="time">30</span> seconds</p>
         </div>
-        <div class="answer-section">
-            <div class="answer bordered">
-                <h5>A: <span id="ans"></span></h5>
-            </div>
-            <div class="answer bordered">
-                <h5>B: <span id="answ"></span></h5>
-            </div>
-            <div class="answer bordered">
-                <h5>C: <span id="answ"></span></h5>
-            </div>
-            <div class="answer bordered">
-                <h5>D: <span id="answ"></span></h5>
-            </div>
+
+
+        <div class="win-container">
+            <h2>Correct!</h2>
+            <img class="img" src="" alt="">
         </div>
+
+        <div class="lose-container">
+            <h2>Nope!</h2>
+            <h5>The correct answer was <span id=corAns></span></h5>
+            <img class="img" src="" alt="">
+        </div>
+
+        <div class="oot-container">
+            <h2>Out of Time!</h2>
+            <h5>The correct answer was <span id=corAns></span></h5>
+            <img class="img" src="" alt="">
+        </div>
+
 
 
     </div>
+
+
 
 
 

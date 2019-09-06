@@ -19,18 +19,38 @@ var aArray = [["Kiev", "Moscow", "Minsk", "Belgrad"],
                 ["Tashkent", "Ashgabat", "Dushanbe", "Bishkek"],
                 ["Geneva", "Zurich", "Lucerne", "Bern"],
                 ["Baku", "Tbilisi", "Yerevan", "Tehran"]];
+
+var imgArray = ["./assets/images/moscow.jpg",
+                "/assets/images/berlin.jpg",
+                "./assets/images/canberra.jpg",
+                "./assets/images/bangkok.jpeg",
+                "./assets/images/abuja.jpeg",
+                "./assets/images/quito.jpg",
+                "./assets/images/tegucigalpa.jpg",
+                "./assets/images/dushanbe.jpg",
+                "./assets/images/bern.png",
+                "./assets/images/Baku.png"]
 var qNumber = 0;
 var corAnsArray = [1, 3, 2, 0, 1, 1, 3, 2, 3, 0];
-
+$(".win-container").hide();
+$(".lose-container").hide();
+$(".oot-container").hide();
+var correct = 0;
+var wrong = 0;
+var time = 30;
 
 $(document).ready(function () {
     showQuestion();
+    startTimer();
 
 
     $(".answer").on('click', function () {
         if ($(this).index() === corAnsArray[qNumber]) {
-            qNumber++;
-            showQuestion();
+            correct++;
+            showWinContainer();
+        } else {
+            wrong++;
+            showLoseContainer();
         }
     });
 });
@@ -39,9 +59,47 @@ $(document).ready(function () {
 
 const showQuestion = function () {
     $("#question").text(qArray[qNumber]);
-    $("h5").children().each(function (ansIndex) {
+    $(".ans").each(function (ansIndex) {
         $(this).text(aArray[qNumber][ansIndex]);
     });
+};
+
+const showNextQuestion = function () {
+    qNumber++;
+    showQuestion();
+}
+
+const showWinContainer = function () {
+    $(".img").attr('src', imgArray[qNumber]);
+    $(".question-container").hide();
+    $(".win-container").show();
+};
+
+const showLoseContainer = function () {
+    $(".img").attr('src', imgArray[qNumber]);
+    $("#corAns").text(aArray[qNumber][corAnsArray[qNumber]]);
+    $(".question-container").hide();
+    $(".lose-container").show();
+}
+
+
+const startTimer = function () {
+    interval = setInterval(count, 1000);
+};
+
+const resetTimer = function() {
+    $("#time").text(30);
+};
+
+const stopTimer = function() {
+    clearInterval(interval);
+};
+
+function count() {
+    time--;
+    $("#time").text(time);
+    if (time === 0)  
+        stopTimer();
 };
 
 

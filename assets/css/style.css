@@ -12,7 +12,7 @@ body {
     text-align: center;
 }
 
-.questionContainer {
+.container {
     position: absolute;
     height: 400px;
     width: 600px;
@@ -62,6 +62,15 @@ h5 {
 
 h5:hover {
     color: black;
+}
+
+p {
+    color: white;
+}
+
+.img {
+    width: 200px;
+    height: 200px;
 }
 
 
