@@ -73,6 +73,21 @@ p {
     height: 200px;
 }
 
+button {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;;
+    margin-top: 55px;
+}
+
+button:active {
+    background-color: white;
+    color: black;
+    transform: translateY(4px);
+}
+
 
 
 .bordered {
