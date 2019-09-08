@@ -21,6 +21,7 @@ body {
     margin-top: 10%;
     padding: 10px;
     text-align: center;
+    color: white;
 }
 
 .question-section {
@@ -30,8 +31,12 @@ body {
     text-align: center;
 }
 
+h1 {
+    font-size: 45px;
+    padding: 3px; 
+}
+
 h2 {
-    color: white;
     font-size: 35px;
     line-height: 100px;
     padding: 3px; 
@@ -53,29 +58,24 @@ h2 {
 }
 
 h5 {
-    color: white;
     font-size: 25px;
     font-weight: 500;
     line-height: 40px;
     padding: 5px;
 }
 
-h5:hover {
+.question-container h5:hover {
     color: black;
 }
 
-p {
-    color: white;
-}
-
-.img {
+#img {
     width: 200px;
     height: 200px;
 }
 
 button {
-    background-color: black;
     color: white;
+    background-color: black;
     text-decoration: none;
     font-size: 20px;
     padding: 10px 20px;;

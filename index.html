@@ -14,6 +14,15 @@
 
 <body>
     <div class="container">
+        <div class="start-container">
+            <h1>Welcome to the game!</h1>
+            <br>
+            <br>
+            <h5>You will be asked 10 questions about capitals of the different countries</h5> 
+            <h5>Press start to begin</h5>
+            <button id="start" class="bordered">Start</button>
+        </div>
+
         <div class="question-container">
             <div class="question-section bordered">
                 <h2 id="question"></h2>
@@ -35,22 +44,10 @@
             <p>Time remaining: <span id="time">30</span> seconds</p>
         </div>
 
-
-        <div class="win-container">
-            <h2>Correct!</h2>
-            <img class="img" src="" alt="">
-        </div>
-
-        <div class="lose-container">
-            <h2>Nope!</h2>
-            <h5>The correct answer was <span class="corAns"></span></h5>
-            <img class="img" src="" alt="">
-        </div>
-
-        <div class="oot-container">
-            <h2>Out of Time!</h2>
-            <h5>The correct answer was <span class="corAns"></span></h5>
-            <img class="img" src="" alt="">
+        <div class="result-container">
+            <h2 id="resulth2"></h2>
+            <h5 id="corAns"></h5>
+            <img id="img" src="">
         </div>
 
         <div class="gameover-container">

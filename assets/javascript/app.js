@@ -29,11 +29,10 @@ var imgArray = ["./assets/images/moscow.jpg",
     "./assets/images/tegucigalpa.jpg",
     "./assets/images/dushanbe.jpg",
     "./assets/images/bern.png",
-    "./assets/images/Baku.png"]
+    "./assets/images/Baku.png"];
 
-$(".win-container").hide();
-$(".lose-container").hide();
-$(".oot-container").hide();
+$(".question-container").hide();
+$(".result-container").hide();
 $(".gameover-container").hide();
 
 
@@ -43,20 +42,29 @@ var correct = 0;
 var wrong = 0;
 var notAnswered = 0;
 var time = 30;
+var win = false;
+var loose = false;
+var outOfTime = false;
+
 
 $(document).ready(function () {
-    showQuestion();
-    startTimer();
+    $("#start").on('click', function() {
+        $(".start-container").hide();
+        showQuestion();
+        startTimer();
+    });
+    
 
 
     $(".answer").on('click', function () {
         if ($(this).index() === corAnsArray[qNumber]) {
             correct++;
-            showWinContainer();
+            win = true;
         } else {
             wrong++;
-            showLoseContainer();
+            loose = true;
         }
+        showResultContainer();
     });
 
     $("#restart").on('click', function () {
@@ -95,30 +103,25 @@ const showNextQuestion = function () {
 
 }
 
-const showWinContainer = function () {
-    $(".img").attr('src', imgArray[qNumber]);
+const showResultContainer = function () {
+    if (win) {
+        $("#resulth2").text("Correct!");
+        $(".result-container h5").hide();
+        win = false;
+    } else if (loose) {
+        $("#resulth2").text("Nope!");
+        $("#corAns").text("The correct answer was " + aArray[qNumber][corAnsArray[qNumber]]);
+        loose = false;
+    } else if (outOfTime){
+        $("#resulth2").text("Out of Time!");
+        $("#corAns").text("The correct answer was " + aArray[qNumber][corAnsArray[qNumber]]);
+        outOfTime = false;
+    }
+    $("#img").attr('src', imgArray[qNumber]);
     $(".question-container").hide();
-    $(".win-container").show();
-    setTimeout(() => $(".win-container").hide(), 1000);
-    setTimeout(showNextQuestion, 1000);
-};
-
-const showLoseContainer = function () {
-    $(".img").attr('src', imgArray[qNumber]);
-    $(".corAns").text(aArray[qNumber][corAnsArray[qNumber]]);
-    $(".question-container").hide();
-    $(".lose-container").show();
-    setTimeout(() => $(".lose-container").hide(), 1000);
-    setTimeout(showNextQuestion, 1000);
-}
-
-const showOotContainer = function () {
-    $(".img").attr('src', imgArray[qNumber]);
-    $(".corAns").text(aArray[qNumber][corAnsArray[qNumber]]);
-    $(".question-container").hide();
-    $(".oot-container").show();
-    setTimeout(() => $(".oot-container").hide(), 1000);
-    setTimeout(showNextQuestion, 1000);
+    $(".result-container").show();
+    setTimeout(() => $(".result-container").hide(), 2000);
+    setTimeout(showNextQuestion, 2000);
 }
 
 const showGameoverContainer = function () {
@@ -149,9 +152,9 @@ const count = function () {
     $("#time").text(time);
     if (time === 0) {
         notAnswered++;
-        showOotContainer();
+        outOfTime = true;
+        showResultContainer();
     }
-
 };
 
 
